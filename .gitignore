@@ -1,0 +1,20 @@
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+
+# Python
+_pycache_/
+*.py[cod]
+venv/
+.venv/
+
+# Node.js y React
+node_modules/
+dist/
+
+# Archivos del editor
+.vscode/
+
+# Archivos del sistema
+.DS_Store
