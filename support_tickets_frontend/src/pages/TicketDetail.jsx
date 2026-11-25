@@ -1,6 +1,8 @@
 import {useState,useEffect} from 'react'
 import {useParams,Link,useNavigate } from 'react-router-dom'
 
+const API = import.meta.env.VITE_API_URL;
+
 function TicketDetail(){
     const {ticketId} = useParams()
 
@@ -34,7 +36,7 @@ function TicketDetail(){
             }
 
             try {
-                const response = await fetch(`http://localhost:8000/tickets/${ticketId}/notes`,
+                const response = await fetch(`${API}/tickets/${ticketId}/notes`,
                     {
                         headers:{
                             Authorization: 'Bearer '+ token,
@@ -68,7 +70,7 @@ function TicketDetail(){
             const token = localStorage.getItem('token')
             
             try {
-                const response = await fetch(`http://localhost:8000/tickets/${ticketId}`,{
+                const response = await fetch(`${API}/tickets/${ticketId}`,{
                     headers: {
                         Authorization: 'Bearer ' + token,
                     },
@@ -113,7 +115,7 @@ function TicketDetail(){
         setMessage("")
 
         try {
-            const response = await fetch(`http://localhost:8000/tickets/${ticketId}/notes`,
+            const response = await fetch(`${API}/tickets/${ticketId}/notes`,
                 {
                     method:'POST',
                     headers:{
@@ -153,7 +155,7 @@ function TicketDetail(){
         setMessage("")
 
         try {
-            const response = await fetch(`http://localhost:8000/tickets/${ticketId}/close`,
+            const response = await fetch(`${API}/tickets/${ticketId}/close`,
                 {
                     method: 'PATCH',
                     headers:{

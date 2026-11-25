@@ -1,6 +1,8 @@
 import { useEffect,useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+const API = import.meta.env.VITE_API_URL;
+
 function Admin(){
     const navigate = useNavigate()
 
@@ -19,7 +21,7 @@ function Admin(){
         setSuccessMessage("")
 
         try {
-            const response = await fetch(`http://localhost:8000/auth/admin/users/${userId}/role`,{
+            const response = await fetch(`${API}/auth/admin/users/${userId}/role`,{
                 method:'PATCH',
                 headers:{
                     'Content-Type':'application/json',
@@ -58,7 +60,7 @@ function Admin(){
 
             try {
                 //Comprobamos quien esta conectado
-                const userResponse = await fetch('http://localhost:8000/auth/me',{
+                const userResponse = await fetch(`${API}/auth/me`,{
                     headers:{
                         Authorization:'Bearer ' + token,
                     },
@@ -85,7 +87,7 @@ function Admin(){
                 }
 
                 //Consultamos todos los usuarios
-                const response = await fetch('http://localhost:8000/auth/admin/users',{
+                const response = await fetch(`${API}/auth/admin/users`,{
                     headers:{
                         Authorization: 'Bearer ' + token,
                     },

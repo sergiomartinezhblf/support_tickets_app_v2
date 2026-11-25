@@ -1,6 +1,8 @@
 import { useState } from "react"
 import {Link} from 'react-router-dom'
 
+const API = import.meta.env.VITE_API_URL;
+
 function Register(){
     const [username,setUsername] = useState("")
     const [email,setEmail] = useState("")
@@ -15,7 +17,7 @@ function Register(){
         setSuccess("")
 
         try{
-            const response = await fetch('http://localhost:8000/auth/register',
+            const response = await fetch(`${API}/auth/register`,
                 {
                     method: 'POST',
                     headers: {

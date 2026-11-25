@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import {useNavigate,Link} from 'react-router-dom'
 
+const API = import.meta.env.VITE_API_URL;
+
 function Login(){
    const [email,setEmail] = useState("")
    const [password,setPassword] = useState("")
@@ -18,9 +20,8 @@ function Login(){
        formData.append('password',password)
 
        try {
-          console.log("url que voy a usar",'http://localhost:8000/auth/login')
 
-          const response = await fetch('http://localhost:8000/auth/login',{
+          const response = await fetch(`${API}/auth/login`,{
             method: 'POST',
             headers: {
                 'Content-Type':'application/x-www-form-urlencoded',

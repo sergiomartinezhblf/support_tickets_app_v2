@@ -1,6 +1,8 @@
 import { useState,useEffect } from "react"
 import {Link, useNavigate } from 'react-router-dom'
 
+const API = import.meta.env.VITE_API_URL;
+
 
 function Dashboard(){
 
@@ -29,7 +31,7 @@ function Dashboard(){
         const token = localStorage.getItem("token")
 
         try {
-            const response = await fetch('http://localhost:8000/tickets/',
+            const response = await fetch(`${API}/tickets/`,
                 {
                     method:'POST',
                     headers:{
@@ -80,7 +82,7 @@ function Dashboard(){
            }        
 
            try {
-             const  userResponse = await fetch('http://localhost:8000/auth/me',
+             const  userResponse = await fetch(`${API}/auth/me`,
                 {
                     headers:{
                         Authorization: 'Bearer '+token,
@@ -94,7 +96,7 @@ function Dashboard(){
              const userData = await userResponse.json()
              setUser(userData)
 
-            const ticketsResponse = await fetch('http://localhost:8000/tickets',
+            const ticketsResponse = await fetch(`${API}/tickets`,
                 {
                     headers:{
                         Authorization: 'Bearer '+token,
